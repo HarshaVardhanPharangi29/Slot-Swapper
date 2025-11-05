@@ -64,9 +64,3 @@ Frontend (Netlify)
 - POST /api/swap-request {mySlotId,theirSlotId}
 - GET  /api/swap-requests
 - POST /api/swap-response/:id {accept:true|false}
-
-
-## Notes
-- Frontend stores JWT in localStorage (demo purposes).
-- For production hardening, restrict server CORS to your Netlify domain and add security headers.
-
