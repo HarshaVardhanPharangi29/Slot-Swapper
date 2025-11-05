@@ -6,7 +6,7 @@ Peer-to-peer time-slot scheduling app. Users mark events as SWAPPABLE, browse ot
 - Backend (Render): https://slot-swapper-8rve.onrender.com
   - Health: https://slot-swapper-8rve.onrender.com/api/health → {"ok": true}
   - Root: returns "Slot Swapper API is running 🚀"
-- Frontend (Netlify): https://slot-swapperr.netlify.app
+- Frontend (Netlify): https://slot-swapperrr.netlify.app
 
 ## Features
 - Auth: Email/password, JWT sessions.
