@@ -65,15 +65,6 @@ Frontend (Netlify)
 - GET  /api/swap-requests
 - POST /api/swap-response/:id {accept:true|false}
 
-## Quick verification (deployed backend)
-PowerShell:
-```
-$BASE='https://slot-swapper-8rve.onrender.com/api'
-# signup/login
-$login = Invoke-RestMethod -Method Post -Uri "$BASE/auth/login" -ContentType 'application/json' -Body (@{email='test@example.com';password='pass123'} | ConvertTo-Json); $tok=$login.token; $H=@{Authorization="Bearer $tok"}
-# events
-Invoke-RestMethod -Headers $H -Uri "$BASE/events"
-```
 
 ## Notes
 - Frontend stores JWT in localStorage (demo purposes).
