@@ -19,21 +19,8 @@ Peer-to-peer time-slot scheduling app. Users mark events as SWAPPABLE, browse ot
 - Backend: Node.js, Express, Mongoose, JWT, bcryptjs
 - DB: MongoDB Atlas
 
-## Local Development
-1) Backend env
-```
-Copy server/.env.example server/.env
-# Edit server/.env
-MONGO_URI=mongodb://127.0.0.1:27017/slotswapper
-JWT_SECRET=change_me
-PORT=4000
-```
-2) Frontend env
-```
-Copy client/.env.example client/.env
-VITE_API_URL=http://localhost:4000/api
-```
-3) Install & run
+## Install & run
+
 ```
 npm install --prefix server && npm run dev --prefix server
 npm install --prefix client && npm run dev --prefix client
