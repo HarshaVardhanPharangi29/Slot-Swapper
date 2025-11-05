@@ -26,8 +26,9 @@ export default function Login() {
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <div className="card p-6">
+    <div className="min-h-[60vh] flex items-center justify-center px-4">
+      <div className="max-w-md w-full">
+        <div className="card p-6">
         <h3 className="heading mb-4">Login</h3>
         <form onSubmit={onSubmit} className="grid gap-3">
           <div>
@@ -41,7 +42,8 @@ export default function Login() {
           {error && <div className="text-sm text-red-600">{error}</div>}
           <button type="submit" className="btn btn-primary w-full">Login</button>
         </form>
-        <div className="text-sm text-gray-600 mt-3">No account? <Link className="text-brand-700 hover:underline" to="/signup">Signup</Link></div>
+        </div>
+        <div className="text-sm text-gray-600 mt-3 text-center">No account? <Link className="text-brand-700 hover:underline" to="/signup">Signup</Link></div>
       </div>
     </div>
   );

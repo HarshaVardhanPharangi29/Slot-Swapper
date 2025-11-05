@@ -15,6 +15,7 @@ export default function Dashboard() {
   const [end, setEnd] = useState('');
   const [error, setError] = useState('');
   const [viewMode, setViewMode] = useState('list'); // 'list' | 'calendar'
+  const [calHeight, setCalHeight] = useState(600);
 
   const reload = async () => {
     try {
@@ -26,6 +27,13 @@ export default function Dashboard() {
   };
 
   useEffect(() => { reload(); }, []);
+
+  useEffect(() => {
+    const onResize = () => setCalHeight(window.innerWidth < 640 ? 400 : 600);
+    onResize();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   const onCreate = async (e) => {
     e.preventDefault();
@@ -58,20 +66,20 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-end justify-between">
+  <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
         <div>
           <h3 className="heading">My Events</h3>
           <div className="text-sm text-gray-600">Hello, {user?.name}</div>
         </div>
-        <div className="flex gap-2">
-          <button className={`btn ${viewMode === 'list' ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setViewMode('list')}>List</button>
-          <button className={`btn ${viewMode === 'calendar' ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setViewMode('calendar')}>Calendar</button>
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+          <button className={`btn ${viewMode === 'list' ? 'btn-primary' : 'btn-secondary'} w-full sm:w-auto`} onClick={() => setViewMode('list')}>List</button>
+          <button className={`btn ${viewMode === 'calendar' ? 'btn-primary' : 'btn-secondary'} w-full sm:w-auto`} onClick={() => setViewMode('calendar')}>Calendar</button>
         </div>
       </div>
 
       <div className="card p-6">
         <h4 className="subheading mb-3">Add new event</h4>
-        <form onSubmit={onCreate} className="grid sm:grid-cols-2 gap-3 max-w-2xl">
+  <form onSubmit={onCreate} className="grid sm:grid-cols-2 gap-3 max-w-2xl">
           <div className="sm:col-span-2">
             <label className="label">Title</label>
             <input className="input mt-1" placeholder="Team Meeting" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -93,16 +101,16 @@ export default function Dashboard() {
         <ul className="grid gap-3">
           {events.map(ev => (
             <li key={ev._id} className="card p-4">
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
                 <div>
                   <div className="font-semibold text-gray-900">{ev.title}</div>
                   <div className="text-sm text-gray-600">{new Date(ev.startTime).toLocaleString()} — {new Date(ev.endTime).toLocaleString()}</div>
                   <div className="text-xs mt-1"><span className="px-2 py-0.5 rounded-full bg-gray-100 text-gray-700">{ev.status}</span></div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <button className="btn btn-secondary" onClick={() => setStatus(ev._id, 'BUSY')}>Set Busy</button>
-                  <button className="btn btn-primary" onClick={() => setStatus(ev._id, 'SWAPPABLE')}>Make Swappable</button>
-                  <button className="btn btn-danger" onClick={() => remove(ev._id)}>Delete</button>
+                <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto mt-3 sm:mt-0">
+                  <button className="btn btn-secondary w-full sm:w-auto" onClick={() => setStatus(ev._id, 'BUSY')}>Set Busy</button>
+                  <button className="btn btn-primary w-full sm:w-auto" onClick={() => setStatus(ev._id, 'SWAPPABLE')}>Make Swappable</button>
+                  <button className="btn btn-danger w-full sm:w-auto" onClick={() => remove(ev._id)}>Delete</button>
                 </div>
               </div>
             </li>
@@ -115,7 +123,7 @@ export default function Dashboard() {
             events={calendarEvents}
             startAccessor="start"
             endAccessor="end"
-            style={{ minHeight: 600 }}
+            style={{ minHeight: calHeight }}
             popup
           />
         </div>

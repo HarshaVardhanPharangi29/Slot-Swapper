@@ -9,6 +9,7 @@
 
 @layer components {
   .container-page { @apply max-w-5xl mx-auto px-4 py-6; }
+  .container-page { @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6; }
   .card { @apply bg-white rounded-xl shadow-sm border border-gray-200; }
   .btn { @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors; }
   .btn-primary { @apply bg-brand-600 text-white hover:bg-brand-700; }

@@ -25,8 +25,9 @@ export default function Signup() {
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <div className="card p-6">
+    <div className="min-h-[60vh] flex items-center justify-center px-4">
+      <div className="max-w-md w-full">
+        <div className="card p-6">
         <h3 className="heading mb-4">Create account</h3>
         <form onSubmit={onSubmit} className="grid gap-3">
           <div>
@@ -44,8 +45,9 @@ export default function Signup() {
           {error && <div className="text-sm text-red-600">{error}</div>}
           <button type="submit" className="btn btn-primary w-full">Create account</button>
         </form>
-        <div className="text-sm text-gray-600 mt-3">Already have an account? <Link className="text-brand-700 hover:underline" to="/login">Login</Link></div>
+        <div className="text-sm text-gray-600 mt-3 text-center">Already have an account? <Link className="text-brand-700 hover:underline" to="/login">Login</Link></div>
       </div>
     </div>
+  </div>
   );
 }
