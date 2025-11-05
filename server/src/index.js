@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Public root endpoint
+
 app.get('/', (req, res) => {
   res.send('Slot Swapper API is running 🚀');
 });
